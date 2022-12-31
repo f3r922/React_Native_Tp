@@ -21,7 +21,14 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
+import { Avatar, Button } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import { appSelector } from '../redux/appRedux';
+import { useDispatch } from 'react-redux';
+import { appActions } from '../redux/appRedux';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './Login';
 
 
 const WIDTH = Dimensions.get('window').width;
@@ -29,13 +36,35 @@ const HEIGHT = Dimensions.get('window').height;
 
 const Profile = () => {
 
+  const Stack = createStackNavigator();
+
+  const user = useSelector(appSelector.user);
+  const dispatch = useDispatch();
+  const setAuth = () => {
+    dispatch(appActions.setUser(null));
+  };
+
   return (
+
+    user ? 
     <SafeAreaProvider>
-      <Header title='perfil'/>
-      <View style={ styles.viewGrid }>
-        <Text style={styles.textButton}>Perfil</Text>
-      </View>
+      <Header title="perfil"/>
+        <View style={{ justifyContent:'flex-end', alignItems: 'center', flex: 1 }}>
+          <Avatar
+            size={150}
+            rounded
+            source={{ uri: "https://avatars.githubusercontent.com/u/89277558?s=400&u=8b593af3997cf05bea9a81df97ad2284dddc359a&v=4" }}
+          />
+        </View>
+        <View style={{ justifyContent:'flex-start', alignItems: 'center', flex: 1}}>
+          <Text style={styles.textButton}>{user.name} {user.lastname}</Text>
+        </View>
+        <View style={{flex:0.5, alignItems:'center', justifyContent:'center'}}>
+          <Button title="Log Out" onPress={ () => setAuth() } buttonStyle={{backgroundColor:'red', borderRadius: 50, justifyContent:'flex-start'}} />
+        </View>
     </SafeAreaProvider>
+    :
+    <Stack.Screen name="Login" component={Login}/>
   );
 };
 

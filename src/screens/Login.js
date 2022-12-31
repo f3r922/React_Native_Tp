@@ -22,17 +22,25 @@ import {
   ImageBackground,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+import { Button } from '@rneui/themed';
+import { useDispatch } from 'react-redux';
+import { appActions } from '../redux/appRedux';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 const Login = () => {
 
+  const dispatch = useDispatch();
+  const setAuth = () => {
+    dispatch(appActions.setUser({name: 'Fernando', lastname: 'Carrizo'}));
+  };
+
+  
   return (
     <SafeAreaProvider>
       <View style={ styles.viewGrid }>
-        <Text style={styles.textButton}>Login</Text>
+        <Button title={"Login"} onPress={ () => setAuth() }/>
       </View>
     </SafeAreaProvider>
   );

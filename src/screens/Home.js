@@ -36,11 +36,11 @@ const Home = () => {
   return (
     <SafeAreaProvider>
       <Header />
-      <View style={{flex:1}}>
         <ImageBackground style={{height:HEIGHT, width:WIDTH}} source={require('../assets/images/fondo.jpg')}>
+        <View style={{flex:1}}>
           <View style={ { flexDirection: 'row', flex: 1 } }>
             <View style={{...styles.viewGrid, justifyContent: 'flex-end', paddingBottom: '5%'}}>
-                <TouchableOpacity style={{...styles.buttonGrid, backgroundColor: 'green'}}  onPress={()=>navigateTo('Task')}>
+                <TouchableOpacity style={{...styles.buttonGrid, backgroundColor: 'green'}}  onPress={()=>navigateTo('Tasks')}>
                   <Text style={styles.textButton}>TAREAS</Text>
                 </TouchableOpacity>
             </View>
@@ -62,8 +62,8 @@ const Home = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </ImageBackground>
       </View>
+      </ImageBackground>
     </SafeAreaProvider>
   );
 };

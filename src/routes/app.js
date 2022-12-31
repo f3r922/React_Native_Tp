@@ -2,22 +2,20 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { Tabs }  from './tabs';
 import Login from '../screens/Login';
-import Tarea from '../screens/Task';
+import { useSelector } from 'react-redux';
+import { appSelector } from '../redux/appRedux';
 
 
 const Stack = createStackNavigator();
 
 export const AppStack = () => {
 
-	const sesion = true;
+	const user = useSelector(appSelector.user);
 	return (
 		<Stack.Navigator screenOptions={{headerShown:false}}>
 				{
-					sesion ?
-					<>
-						<Stack.Screen name="Main" component={Tabs}/>
-						<Stack.Screen name="Task" component={Tarea}/>
-					</>
+					user ?
+					<Stack.Screen name="Main" component={Tabs}/>
 					:
 					<Stack.Screen name="Login" component={Login}/>
 				}

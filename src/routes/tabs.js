@@ -6,10 +6,20 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import List from '../screens/List';
 import GoogleMap from '../screens/GoogleMap';
-import Tarea from '../screens/Task';
+import Tasks from '../screens/Tasks';
 import { Icon } from '@rneui/themed';
+import { createStackNavigator } from '@react-navigation/stack';
 
+const HomeStack = createStackNavigator();
+const HomeScreens = () => {
 
+  return (
+    <HomeStack.Navigator screenOptions={{headerShown:false}}>
+      <HomeStack.Screen name="Home" component={Home}/>
+      <HomeStack.Screen name="Tasks" component={Tasks}/>
+    </HomeStack.Navigator>
+  );
+};
 const Tab = createMaterialBottomTabNavigator();
 
 export const Tabs = () => {
@@ -17,7 +27,7 @@ export const Tabs = () => {
     <Tab.Navigator
       barStyle={{ backgroundColor: '#397af8' }}
     >
-      <Tab.Screen name="Home" component={Home} options={{
+      <Tab.Screen name="casa" component={HomeScreens} options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <Icon name="home" type='font-awesome-5' color={'purple'}  />
