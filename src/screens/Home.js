@@ -52,7 +52,7 @@ const Home = () => {
           </View>
           <View style={{ flexDirection:'row', flex: 1 }}>
             <View style={{...styles.viewGrid, justifyContent: 'flex-start', paddingTop: '5%'}}>
-              <TouchableOpacity style={{...styles.buttonGrid, backgroundColor: 'blue'}} onPress={()=>navigateTo('List')}>
+              <TouchableOpacity style={{...styles.buttonGrid, backgroundColor: 'blue'}} onPress={()=>navigateTo('Listas')}>
                 <Text style={styles.textButton}>POKEDEX</Text>
               </TouchableOpacity>
             </View>
