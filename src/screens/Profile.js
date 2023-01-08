@@ -10,16 +10,10 @@ import React from 'react';
 import Header  from '../components/AppHeader';
 import 'react-native-gesture-handler';
 import {
-	SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
-  TouchableOpacity,
   Dimensions,
-  ImageBackground,
 } from 'react-native';
 import { Avatar, Button } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -46,14 +40,14 @@ const Profile = () => {
 
   return (
 
-    user ? 
+    user ?
     <SafeAreaProvider>
       <Header title="perfil"/>
         <View style={{ justifyContent:'flex-end', alignItems: 'center', flex: 1 }}>
           <Avatar
             size={150}
             rounded
-            source={{ uri: "https://avatars.githubusercontent.com/u/89277558?s=400&u=8b593af3997cf05bea9a81df97ad2284dddc359a&v=4" }}
+            source={{ uri: 'https://avatars.githubusercontent.com/u/89277558?s=400&u=8b593af3997cf05bea9a81df97ad2284dddc359a&v=4' }}
           />
         </View>
         <View style={{ justifyContent:'flex-start', alignItems: 'center', flex: 1}}>
@@ -87,8 +81,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     backgroundColor: '#606060',
-    width: WIDTH * .4,
-    height: HEIGHT * .4,
+    width: WIDTH * 0.4,
+    height: HEIGHT * 0.4,
     borderRadius: 8,
   },
   sectionContainer: {
